@@ -4,7 +4,7 @@ const server = net.createServer(socket => {
   console.log('Client Connected')
 
   socket.on('data', chunk => {
-    console.log('Received:', chunk)
+    console.log('Received:', chunk.toString())
 
     socket.write(`Received: ${chunk}`) // response back to the client
     socket.end()
