@@ -9,6 +9,10 @@ const server = net.createServer(socket => {
     socket.write(`Received: ${chunk}`) // response back to the client
     socket.end()
   })
+
+  socket.on('error', err => {
+    console.log(`Error: ${err}`)
+  })
 })
 
 server.listen(1337, () => {
