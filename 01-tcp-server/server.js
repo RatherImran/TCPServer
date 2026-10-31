@@ -1,7 +1,14 @@
 import net from 'node:net'
 
 const server = net.createServer(socket => {
-  console.log('Connection established')
+  console.log('Client Connected')
+
+  socket.on('data', chunk => {
+    console.log('Received:', chunk)
+
+    socket.write(`Received: ${chunk}`) // response back to the client
+    socket.end()
+  })
 })
 
 server.listen(1337, () => {
